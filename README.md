@@ -40,7 +40,7 @@ ql repo https://github.com/Huansheng1/my-qinglong-js.git "" "sendNotify.js|utils
 新建订阅 - 在名称处粘贴上面命令，定时更新时间自己设置 - 
 ![](https://pic.imgdb.cn/item/64777068f024cca1734809e1.jpg)、![](https://pic.imgdb.cn/item/64777091f024cca1734833ad.jpg)
 
-
+> 国内拉取不下来的，可将地址替换为：`https://gitclone.com/github.com/Huansheng1/my-qinglong-js.git`、`https://hub.nuaa.cf/Huansheng1/my-qinglong-js.git`；自己哪个快用哪个，有别的好用的欢迎补充。
 ### 脚本说明
 
 见各个脚本 头部描述
