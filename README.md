@@ -19,13 +19,13 @@
 
 您使用或者复制了本仓库且本人制作的任何脚本，则视为 已接受 此声明，请仔细阅读
 
-> 自写脚本，不存在后门，为了避免被人搬运才加密。
 
 ## 公告
+> 自写 + 自用 的他人脚本
 
-不定期更新，有问题提issue描述清楚，避免浪费大家时间；
+不定期更新，有问题提issue描述清楚，避免浪费大家时间；或者 进群 -  [通知群](https://t.me/huan_sheng) 
 
-支持的话，可以看看这里的实惠流量卡，非物流卡哦，不定期更新， 地址：http://www.91haoka.cn/gth/#/minishop?share_id=468272&shop_name=%25E5%2585%25A8%25E7%25BD%2591%25E4%25BC%2598%25E6%2583%25A0%25E5%258D%25A1
+给朋友宣传一下：<strong style="color:green;">支持的话，可以看看这里的实惠流量卡，非物流卡哦，不定期更新， 地址：http://www.91haoka.cn/gth/#/minishop?share_id=468272&shop_name=%25E5%2585%25A8%25E7%25BD%2591%25E4%25BC%2598%25E6%2583%25A0%25E5%258D%25A1</strong>
 
 ### 青龙拉取
 > 先安装nodejs依赖：
@@ -34,13 +34,20 @@
 #### 运行说明
 旧版本：
 ```bash
-ql repo https://github.com/Huansheng1/my-qinglong-js.git "" "sendNotify.js" "sendNotify.js" "main"
+ql repo https://github.com/Huansheng1/my-qinglong-js.git "" "sendNotify.js|utils.js|SendNotify" "sendNotify.js|utils.js|SendNotify" "main"
 ```
 新版：  
 新建订阅 - 在名称处粘贴上面命令，定时更新时间自己设置 - 
 ![](https://pic.imgdb.cn/item/64777068f024cca1734809e1.jpg)、![](https://pic.imgdb.cn/item/64777091f024cca1734833ad.jpg)
 
-
+> 国内拉取不下来的，可将地址替换为：`https://gitclone.com/github.com/Huansheng1/my-qinglong-js.git`、`https://hub.nuaa.cf/Huansheng1/my-qinglong-js.git`；自己哪个快用哪个，有别的好用的欢迎补充。
 ### 脚本说明
 
 见各个脚本 头部描述
+
+### 投稿说明
+
+请前往 [discussions](https://github.com/Huansheng1/my-qinglong-js/discussions/2) 查看要求，按说明投递
+
+### 报错提示
+1. `/ql/data/config/config.sh: line xxx`：`这种基本都是配置文件里的数据配错了，导致qinglong读取环境变量直接崩了，请检查是否多了空格或者格式不合法`
