@@ -47,7 +47,7 @@ async function tips (ckArr) {
         await start();
     }
 
-    filepath = path.resolve('../../../config/config.sh');
+    filepath = path.resolve('../config/config.sh');
 
 
     fs.readFile(filepath, 'utf8', (err, res) => {
@@ -244,7 +244,7 @@ async function SendMsg (message) {
     if (!message) return;
     if (Notify > 0) {
         if ($.isNode()) {
-            var notify = require("./sendNotify");
+            var notify = require("./other_scripts_open_source/unknown/sendNotify");
             await notify.sendNotify($.name, message);
         } else {
             // $.msg(message);
