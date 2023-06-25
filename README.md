@@ -34,7 +34,7 @@
 #### 运行说明
 旧版本：
 ```bash
-ql repo https://github.com/Huansheng1/my-qinglong-js.git "" "sendNotify.js|utils.js" "sendNotify.js|utils.js" "main"
+ql repo https://github.com/Huansheng1/my-qinglong-js.git "" "sendNotify.js|utils.js|SendNotify" "sendNotify.js|utils.js|SendNotify" "main"
 ```
 新版：  
 新建订阅 - 在名称处粘贴上面命令，定时更新时间自己设置 - 
