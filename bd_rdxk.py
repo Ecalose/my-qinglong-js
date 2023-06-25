@@ -8,11 +8,11 @@ new Env('热度星客');
 地址：http://m.reduxingke.com/down/register.html?spread=328168&incode=HS666666
 抓包域名: m.reduxingke.com
 抓包请求头里面: Authori-zation: Bearer XXXXX
-环境变量 rdxkck = Authori-zation抓的XXXXX#提现交易密码(可选)  #分割两个值  Authori-zation不要Bearer
+环境变量 rdxkck = Authori-zation抓的XXXXX#User-Agent#提现交易密码(可选)  #分割两个值  Authori-zation不要Bearer
 多账号新建变量或者用 & 分开
-例如：rdxkck = dca86255101af382#123456     填交易密码满2元自动提现 默认提现到银行卡
-     rdxkck = dca86255101af382            没有交易密码只签到
-请求头User-Agent可以换成自己的
+例如：rdxkck = dca86255101af382#User-Agent#123456     填交易密码满2元自动提现 默认提现到银行卡
+     rdxkck = dca86255101af382#User-Agent            没有交易密码只签到
+请求头换成自己的
 目前仅支持企业微信机器人推送
 
 """
@@ -21,10 +21,10 @@ import requests
 from os import environ
 
 
-def sign(authorization, pwd):
+def sign(authorization, userAgent,pwd):
     headers = {
         "authori-zation": "Bearer " + authorization,
-        "User-Agent": "Mozilla/5.0 (Linux; Android 11;Redmi Note 8 Pro Build/RP1A.200720.011;wv)AppleWebKit/537.36(KHTML./like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/4435 MMWEBSDK/20230202 Mobile Safari/537.36 MMWEBID/9516MicroMessenger/8.0.33.2320(0x28002151) WeChat/arm64 Weixin NetType/4G Language/zh_CN ABI/arm64 MiniProgramEnv/android",
+        "User-Agent": userAgent,
     }
     url = 'https://m.reduxingke.com/api/usersign/sign'
     response = requests.post(url, headers=headers).json()
@@ -38,7 +38,7 @@ def sign(authorization, pwd):
         if pwd != 0:
             txheaders = {
                 "authori-zation": "Bearer " + authorization,
-                "User-Agent": "Mozilla/5.0 (Linux; Android 11;Redmi Note 8 Pro Build/RP1A.200720.011;wv)AppleWebKit/537.36(KHTML./like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/4435 MMWEBSDK/20230202 Mobile Safari/537.36 MMWEBID/9516MicroMessenger/8.0.33.2320(0x28002151) WeChat/arm64 Weixin NetType/4G Language/zh_CN ABI/arm64 MiniProgramEnv/android",
+                "User-Agent": userAgent,
             }
             txdata = {
                 "brokerage": txje,
@@ -101,10 +101,10 @@ if __name__ == '__main__':
             d = i.split('#')
         try:
             a += 1
-            if len(d) == 2:
-                sign(d[0], d[1])
-            elif len(d) == 1:
-                sign(d[0], 0)
+            if len(d) == 3:
+                sign(d[0], d[1], d[2])
+            elif len(d) == 2:
+                sign(d[0], d[1], 0)
         except KeyError:
             print("请检查ck是否正确")
             print()
