@@ -7,7 +7,7 @@ By：随缘撸豆
 
 抓取https://appapi-pki.chehezhi.cn/pivot/account/2.0/accountSafe/registerOrLoginUncheck
  中的 返回 refreshToken
-export nazha="refreshToken"
+export nezha="refreshToken"
 多账号用 换行 或 @ 分割
 cron 22 8 * * *  
 const $ = new Env("哪吒")
