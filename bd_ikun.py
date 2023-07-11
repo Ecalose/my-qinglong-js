@@ -6,6 +6,7 @@ new Env('ikun签到');
 地址：https://v2.zwtg888.com/auth/register?code=77jt
 环境变量 bd_ikun = 邮箱#密码
 多账号新建变量或者用 & 分开
+By：彼得
 
 """
 
