@@ -10,6 +10,7 @@ new Env('歌画东阳');
 抓包请求体里面: account_id和session_id的值 或者 X-ACCOUNT-ID和X-SESSION-ID
 环境变量名称：bd_ghdy = account_id的值#session_id的值  注：用'#'号分开两个参数，顺序不要乱，先是account_id的值然后session_id的值
 多账号新建变量或者用 & 分开
+By：彼得
 
 """
 import zlib, base64

@@ -6,6 +6,7 @@ new Env('ikuuu签到');
 地址：https://ikuuu.eu/
 环境变量 bd_ikuuu = 邮箱#密码
 多账号新建变量或者用 & 分开
+By：彼得
 
 """
 
