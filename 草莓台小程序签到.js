@@ -1,7 +1,7 @@
 /**
  * 草莓台小程序签到v0.03
- * cron 10 12 * * *  xinhai.js
- * 
+ * cron 10 12 * * * 草莓台小程序签到.js
+ * const $ = new Env("草莓台小程序");
  * ========= 青龙--配置文件 ===========
  * # 项目名称
  * export caomeitai_token='你抓包的openid#你的userId'
