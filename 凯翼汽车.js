@@ -1,7 +1,7 @@
 /**
  * 凯翼汽车
- * cron 8 9 * * *  kyqc.js
- * 
+ * cron 8 9 * * *  凯翼汽车.js
+ * const $ = new Env("凯翼汽车");
  * ========= 青龙--配置文件 ===========
  * # 项目名称
  * export kyqc='deviceSN@@@Cookie'
