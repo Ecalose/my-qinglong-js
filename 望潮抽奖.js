@@ -13,6 +13,8 @@
  * 打码地址，需要一个自建的阿里打码接口【wangchao_dataOcrUrl】 + 提交数据【wangchao_dataOcrBody】，返回值为 sessionId&sig&token，我没有远程window服务器，不额外提供
  * 非浙江用户需要额外变量：wangchao_dataHttpProxyUrl，值为 浙江IP的Http代理地址
  * 代理网站的代理不行，服务器代理都进不去活动，测试好几天的血泪！
+ * ========== 【强调】没有代理寸步难行，没有打码接口的话只阅读，手动抽奖！ ================
+ * ========== 【强调】验证失败："登录失败" 是账号黑了，过几天再试，不行就是这个号没救了！ ================
  * ====================================
  * 注册地址：https://tzapp.taizhou.com.cn/webChannels/invite?inviteCode=BY5N29&tenantId=64&accountId=64914db1bf15a44961ed092f
  * 更新日志：修复打码问题以及浙江IP问题，不进行缓存token了
