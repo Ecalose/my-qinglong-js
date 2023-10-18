@@ -3,7 +3,7 @@
  * const $ = new Env("熊猫赚");
  * cron 0 8,20 * * * 熊猫赚.js
  * 走下我的注册地址，谢谢，有本请投稿（利润项目偷撸可dd）：http://spread.mdwl2023.love/panda.html?Promocode=1549081
- * 更新：自动刷新token机制
+ * 更新：使用账号密码登录
  * ========= 青龙--配置文件 ===========
  * # 项目名称
  * export xmz='账号#密码'
