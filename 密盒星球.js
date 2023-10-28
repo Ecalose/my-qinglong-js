@@ -1,15 +1,15 @@
 /**
- * 密盒星球 V1.20
+ * 密盒星球 V1.21
  * const $ = new Env("密盒星球");
  * cron 0 8-21/1 * * * 密盒星球.js
  * 走下我的注册地址，谢谢，有本请投稿（利润项目偷撸可dd）：https://download.chiguavod.com/#/?inviteCode=95JGw7
  * ========= 青龙--配置文件 ===========
  * # 项目名称
  * export mhxq='账号#密码#支付宝姓名#支付宝账号'
- * 支持设置自己想要提现的金额，默认是提现 1 元，通过这个变量，你可以改为自己指定的提现金额
- * 现有档位：0.3（只能提一次）、1（新版本已下架，但是软件还能提，秒到）、5、20、50、200
+ * 支持设置自己想要提现的金额，默认是提现 50 元，通过这个变量，你可以改为自己指定的提现金额
+ * 现有档位：0.3（只能提一次）、1（新版本已下架）、5、20、50、200
  * 注意：如果当前余额不满足当前档位会自动降级更小一档！
- * export mhxqCashAmount='提现金额'
+ * export mhxqCashAmount='50'
  * 每次运行脚本观看多少次视频，默认为3次
  * export mhxqOncePlayVideoNumber='3'
  * 默认提现方式，1 为 支付宝，2 为 微信；目前app只支持 微信提现
@@ -37,8 +37,8 @@
 const oncePlayVideoNumber = 3;
 // 是否禁用自动播放广告的功能
 const disabledAutoPlayVideo = false;
-// 默认自动提现金额：0.3（只能提一次）、1（新版本已下架，但是软件还能提，秒到）、5、20、50、200
-const defaultTxAmount = 1;
+// 默认自动提现金额：0.3（只能提一次）、1（新版本已下架，秒到）、5、20、50、200
+const defaultTxAmount = 50;
 // 默认提现方式，1 为 支付宝，2 为 微信；目前app只支持 微信提现
 const defaultTxMethod = 2;
 // 绑定提现的微信，请打开：https://h5.mihexingqiu.com/wxscope
