@@ -1,9 +1,9 @@
 """
-57Box 1.10
+57Box 1.11
 仅供学习交流，请在下载后的24小时内完全删除 请勿将任何内容用于商业或非法目的，否则后果自负。
 Author By Qim肖恩
 Updated By Huansheng
-更新说明：修复sign接口问题
+更新说明：修复开箱过于频繁的问题
 玩法：
 微信小程序  57Box   玩法：完成基础任务抽免费箱子
 登录微信小程序授权手机号然后下载APP设置密码
@@ -237,6 +237,7 @@ for i, account in enumerate(accounts_list, start=1):
                     else:
                         print(f"错误未知{response}")
                         break
+                    time.sleep(3)
                 print(f"开盲盒操作执行完毕")
                 if num >= 1:
                     url = f"https://www.57box.cn/app/index.php?i=2&t=0&v=1&from=wxapp&c=entry&a=wxapp&do=uptaskinfo&&token={token}"
