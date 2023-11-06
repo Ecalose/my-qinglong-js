@@ -1,5 +1,5 @@
 """
-星空代理 V1.00
+星空代理 V1.01
 注册地址：http://www.xkdaili.com/?ic=7d6acs0s
 签到送IP
 
@@ -11,7 +11,11 @@ cron: 10 00 * * *
 # 变量 export xingkong="账户1:密码&账户2:密码"
 import os
 import re
-from notify import send
+
+try:
+    from SendNotify import send
+except Exception as e:
+    print("未找到推送文件 SendNotify.py，提现成功也不会通知！")
 
 import requests
 
@@ -82,7 +86,8 @@ try:
             print(f"\n账户 {up[0]} 星空签到异常 {str(e)}")
             st += f"\n账户 {up[0]} 星空签到异常 {str(e)}"
     # 执行完毕发送通知
-    send("\n星空签到 ", f"{st}")
+    if send:
+        send("星空签到通知", st)
 except Exception as e:
     print("\n星空签到失败,失败原因 ", str(e))
     if str(e) == "list index out of range":
