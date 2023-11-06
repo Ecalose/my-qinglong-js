@@ -1,9 +1,9 @@
 """
-57Box 1.11
+57Box 1.12
 仅供学习交流，请在下载后的24小时内完全删除 请勿将任何内容用于商业或非法目的，否则后果自负。
 Author By Qim肖恩
 Updated By Huansheng
-更新说明：修复开箱过于频繁的问题
+更新说明：优化相关配置项，可通过环境变量配置了，避免订阅更新导致自己修改的被覆盖了
 玩法：
 微信小程序  57Box   玩法：完成基础任务抽免费箱子
 登录微信小程序授权手机号然后下载APP设置密码
@@ -17,10 +17,12 @@ import urllib3
 urllib3.disable_warnings()
 lottery = 1  # 抽鞋盒开关 1开启 0关闭
 enabledTaskAndLottery = True
-# 盲盒需要的矿石数量
-lotteryBoxPrize = 80
-# 进群密码
-joinGroupPassword = "123456"
+# 盲盒需要的矿石数量，可通过 lottery57BoxBoxPrice 变量配置，这个决定了矿石超过多少才开箱
+lotteryBoxPrice = int(os.getenv("lottery57BoxBoxPrice") or 80)
+# 要开的盲盒ID，默认 586，免费矿石箱，可通过 lottery57BoxBoxId 变量配置
+openBoxId = os.getenv("lottery57BoxBoxId") or "586"
+# 进群密码，可通过 join57BoxGroupPassword 变量配置
+joinGroupPassword = os.getenv("join57BoxGroupPassword") or "123456"
 import os
 import time
 import requests
@@ -194,7 +196,7 @@ for i, account in enumerate(accounts_list, start=1):
                 break
             if lottery == 1:  # 开始抽奖
                 print(f"{'=' * 12}执行开鞋盒{'=' * 12}")
-                num = integral // lotteryBoxPrize
+                num = integral // lotteryBoxPrice
                 for i in range(num):
                     url = "https://www.57box.cn/app/index.php"
                     params = {
@@ -207,7 +209,7 @@ for i, account in enumerate(accounts_list, start=1):
                         "do": "openthebox",
                         "token": token,
                         "m": "greatriver_lottery_operation",
-                        "box_id": "586",
+                        "box_id": openBoxId or "586",
                         "paytype": "1",
                         "answer": "",
                         "num": 1,
