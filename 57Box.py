@@ -12,6 +12,11 @@ export BOX_data=手机号@密码
 cron： 0 8 * * *
 """
 
+import os
+import time
+import requests
+import datetime
+import hashlib
 import urllib3
 
 urllib3.disable_warnings()
@@ -23,11 +28,6 @@ lotteryBoxPrice = int(os.getenv("lottery57BoxBoxPrice") or 80)
 openBoxId = os.getenv("lottery57BoxBoxId") or "586"
 # 进群密码，可通过 join57BoxGroupPassword 变量配置
 joinGroupPassword = os.getenv("join57BoxGroupPassword") or "123456"
-import os
-import time
-import requests
-import datetime
-import hashlib
 
 
 def getSign(userId):
