@@ -1,5 +1,5 @@
 """
- * 大为健康 V1.11
+ * 大为健康 V1.30
 
  * 外面嘎嘎代挂的一天8R项目
 
@@ -17,7 +17,7 @@
 
  * Update by Huansheng
 
- * 定制、偷撸、投稿 联系 QQ：2933903535
+ * 定制、偷撸、投稿 联系 QQ：1047827439
 
 """
 import json
@@ -27,6 +27,12 @@ import requests
 import time
 import random
 from datetime import datetime
+import urllib3
+
+urllib3.disable_warnings()
+
+# 如果是三群请修改变量！比如 hb3，自己抓包看自己的请求接口是什么开头！
+groupName = "hb2"
 
 
 def remove_duplicates(arr):
@@ -59,14 +65,14 @@ activeIdList = remove_duplicates(load_array_from_json("大为健康-店铺ID.jso
 
 
 def send_request(pageIndex):
-    url = "https://hb2.hbdtxt.com/api/index/huodong"
+    url = f"https://{groupName}.hbdtxt.com/api/index/huodong"
     headers = {
         "Authorization": "e2ccf7f8a24dca1464cec8d964e15019",
         "User-Agent": "Mozilla/5.0 (Linux; Android 9; NX629J_V1S Build/PQ3A.190705.09211555; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/91.0.4472.114 Mobile Safari/537.36 MMWEBID/2157 MicroMessenger/8.0.42.2460(0x28002A54) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64",
         "content-type": "application/x-www-form-urlencoded",
         "Accept": "*/*",
         "X-Requested-With": "com.tencent.mm",
-        "Referer": "https://hb2.hbdtxt.com/",
+        "Referer": f"https://{groupName}.hbdtxt.com/",
         "Accept-Encoding": "gzip, deflate",
         "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
         "Cookie": "s342b0066=tu7bbcn9brab7rhosb27jomff2",
@@ -100,12 +106,12 @@ def send_request(pageIndex):
 
 # 答题领红包
 def recieveRebBag(uid, Authorization, huodong_id="1648773920"):
-    url = "http://hb2.hbdtxt.com/api/index/index"
+    url = f"https://{groupName}.hbdtxt.com/api/index/index"
     headers = {
         "Authorization": Authorization,
         "User-Agent": "/5.0 (Linux; Android 9; NX629J_V1S Build/PQ3A.190705.09211555; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/91.0.4472.114 Mobile Safari/537.36 MMWEBID/2157 MicroMessenger/8.0.42.2460(0x28002A54) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64",
         "Content-Type": "application/x-www-form-urlencoded",
-        "Referer": "http://hb3.hbdtxt.com/",
+        "Referer": f"https://{groupName}.hbdtxt.com/",
         "Accept-Encoding": "gzip, deflate",
         "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
         "Cookie": "s342b0066=tu7bbcn9brab7rhosb27jomff2",
@@ -157,12 +163,12 @@ def recieveRebBag(uid, Authorization, huodong_id="1648773920"):
         # 打印结果
         a = f"wentilist={encoded_data}&huodong_id={huodong_id}&ids=&api_type=h5&uid={uid}"
         # print("答题提交数据：", a)
-        url1 = "http://hb2.hbdtxt.com/api/index/dati"
+        url1 = f"https://{groupName}.hbdtxt.com/api/index/dati"
         response = requests.post(url1, headers=headers, data=a)
         response_data = response.json()
-        print("答题结果：", response.text)
+        # print("答题结果：", response.text)
         if response.json()["code"] == 1:
-            print("答题成功：", response_data["msg"])
+            print("答题成功：获得现金", response_data["money"])
             return True
         else:
             print("答题异常：", response_data["msg"])
@@ -172,13 +178,17 @@ def recieveRebBag(uid, Authorization, huodong_id="1648773920"):
         if response_data["code"] == 777:
             print("答题失败，需要参加上一期活动：", response_data["msg"])
             if response_data["prev_huodong_id"]:
-                return recieveRebBag(response_data["prev_huodong_id"])
+                return recieveRebBag(
+                    uid, Authorization, response_data["prev_huodong_id"]
+                )
+            else:
+                return False
         else:
             print("答题异常：", response_data["msg"])
 
 
 def getUserTotalNumber(uid, token):
-    url = "https://hb2.hbdtxt.com/api/index/index"
+    url = f"https://{groupName}.hbdtxt.com/api/index/index"
     response = requests.post(
         url,
         headers={
@@ -187,9 +197,9 @@ def getUserTotalNumber(uid, token):
             "Accept-Language": "zh-CN,zh;q=0.9",
             "Authorization": token,
             "Connection": "keep-alive",
-            "Host": "hb2.hbdtxt.com",
-            "Origin": "https://hb2.hbdtxt.com",
-            "Referer": "https://hb2.hbdtxt.com/",
+            "Host": f"{groupName}.hbdtxt.com",
+            "Origin": f"https://{groupName}.hbdtxt.com",
+            "Referer": f"https://{groupName}.hbdtxt.com/",
             "Sec-Fetch-Dest": "empty",
             "Sec-Fetch-Mode": "cors",
             "Sec-Fetch-Site": "same-origin",
@@ -212,12 +222,14 @@ def getUserTotalNumber(uid, token):
         print(f"查询成功 - 已领红包总数：{result['user']['count_money_num']}个")
         return int(result["user"]["count_money_num"])
     else:
-        print(f"查询失败 - 返回：{response.text}")
+        print(
+            f"查询失败 - 返回：{response.json()['msg']}，请确认自己是哪个群的，2群 和 3群的接口是不一样的，自己看脚本说明，实在不行给我打钱咩"
+        )
         return -1
 
 
 def checkRecieveNumber(uid, token):
-    url = "https://hb2.hbdtxt.com/api/index/datilog"
+    url = f"https://{groupName}.hbdtxt.com/api/index/datilog"
     response = requests.post(
         url,
         headers={
@@ -226,9 +238,9 @@ def checkRecieveNumber(uid, token):
             "Accept-Language": "zh-CN,zh;q=0.9",
             "Authorization": token,
             "Connection": "keep-alive",
-            "Host": "hb2.hbdtxt.com",
-            "Origin": "https://hb2.hbdtxt.com",
-            "Referer": "https://hb2.hbdtxt.com/",
+            "Host": f"{groupName}.hbdtxt.com",
+            "Origin": f"https://{groupName}.hbdtxt.com",
+            "Referer": f"https://{groupName}.hbdtxt.com/",
             "Sec-Fetch-Dest": "empty",
             "Sec-Fetch-Mode": "cors",
             "Sec-Fetch-Site": "same-origin",
@@ -249,13 +261,15 @@ def checkRecieveNumber(uid, token):
         print(f"查询成功 - 今日已领红包数：{todayNumber}个")
         return int(todayNumber)
     else:
-        print(f"查询失败 - 返回：{response.text}")
+        print(
+            f"查询失败 - 返回：{response.json()['msg']}，请确认自己是哪个群的，2群 和 3群的接口是不一样的，自己看脚本说明修改下配置即可，实在不行给我打钱咩"
+        )
         return -1
 
 
 if __name__ == "__main__":
     print(
-        f"当前版本：大为健康 V1.11，Update by Huansheng \n 更新地址：https://github.com/Huansheng1/my-qinglong-js"
+        f"当前版本：大为健康 V1.11，Update by Huansheng \n更新地址：https://github.com/Huansheng1/my-qinglong-js\n自己看脚本说明，还不会的话给我打钱，包教包会！"
     )
     # print("开始遍历店铺")
 
@@ -296,5 +310,6 @@ if __name__ == "__main__":
                 break
             if recieveRebBag(accountConfig[0], accountConfig[1], activeId):
                 answerSuccess = answerSuccess + 1
-                time.sleep(random.randint(8, 16))
+                print(f"账号[{accountConfig[0]}]延迟一会，进行下一次答题")
+                time.sleep(random.randint(18, 46))
         print(f"账号[{accountConfig[0]}]答题操作 已完成")
