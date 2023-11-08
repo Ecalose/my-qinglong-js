@@ -53,9 +53,9 @@ theadNumber = 10  # 并发线程数(建议3线程)
 delayMiniTime = 15
 delayMaxTime = 20
 # 限制只有自己的下级方可自动阅读过检测
-onlyChildrenAutoRead = True
+onlyChildrenAutoRead = False
 # 限制自动检测的账号起始坐标（在这个之前的账号不检测是否为下级），注意：在 conc 和 desi 的情况下会异常，请改为 0
-disabledCheckAccountIndex = 84
+disabledCheckAccountIndex = 0
 # 我的邀请id，根据这个检查是否是自己的下级
 myInviteId = "2568134"
 
