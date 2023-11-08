@@ -1,7 +1,7 @@
 """
 @仅供学习交流，请在下载后的24小时内完全删除 请勿将任何内容用于商业或非法目的，否则后果自负。
 
-微信阅读_至尊宝 V2.10
+微信阅读_至尊宝 V2.11
 
 原作者 不知道是谁，群里下载的
 
@@ -179,6 +179,7 @@ def main_task(accountData, accountIndex):
         autoSkipRead = True
     print(f"============📖开始执行 账号【{accountIndex}】阅读文章📖============")
     for readIndex in range(30):
+        isCheckedPost = False
         biz_list = [
             "MzkyMzI5NjgxMA==",
             "MzkzMzI5NjQ3MA==",
@@ -241,9 +242,10 @@ def main_task(accountData, accountIndex):
                     try:
                         mid = postUrl.split("&mid=")[1].split("&")[0]
                         biz = postUrl.split("__biz=")[1].split("&")[0]
+                        isCheckedPost = True
                     except Exception as e:
                         url = response["data"]["link"]
-
+                        isCheckedPost = False
                         try:
                             result = requests.get(
                                 url, headers=headers, timeout=7, allow_redirects=False
@@ -276,7 +278,7 @@ def main_task(accountData, accountIndex):
 
                     print(f" 账号【{accountIndex}】第{readIndex+1}次获取文章成功---{mid} 来源[{biz}]")
 
-                    if biz in biz_list:
+                    if (biz in biz_list) or isCheckedPost:
                         print(
                             f" 账号【{accountIndex}】第{readIndex+1}次阅读文章 >>> 发现目标[{biz}] 疑似检测文章！！！"
                         )
@@ -334,7 +336,8 @@ def main_task(accountData, accountIndex):
                                     if response["code"] == 0:
                                         gain = response["data"]["gain"]
                                         print(
-                                            f" 账号【{accountIndex}】第{readIndex+1}次阅读检测文章成功---获得钢镚[{gain}]"
+                                            f" 账号【{accountIndex}】第{readIndex+1}次阅读检测文章成功---获得钢镚[{gain}]，返回值：",
+                                            response,
                                         )
                                         print(f"--------------------------------")
                                     else:
@@ -372,7 +375,8 @@ def main_task(accountData, accountIndex):
                                     if response["code"] == 0:
                                         gain = response["data"]["gain"]
                                         print(
-                                            f" 账号【{accountIndex}】第{readIndex+1}次阅读检测文章成功---获得钢镚[{gain}]"
+                                            f" 账号【{accountIndex}】第{readIndex+1}次阅读检测文章成功---获得钢镚[{gain}]，返回值：",
+                                            response,
                                         )
                                         print(f"--------------------------------")
                                     else:
@@ -404,7 +408,8 @@ def main_task(accountData, accountIndex):
                         if response["code"] == 0:
                             gain = response["data"]["gain"]
                             print(
-                                f" 账号【{accountIndex}】第{readIndex+1}次阅读文章成功---获得钢镚[{gain}]"
+                                f" 账号【{accountIndex}】第{readIndex+1}次阅读文章成功---获得钢镚[{gain}]，返回值：",
+                                response,
                             )
                             print(f"--------------------------------")
                         else:
