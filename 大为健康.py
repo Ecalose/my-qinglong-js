@@ -1,5 +1,5 @@
 """
- * 大为健康 V1.30
+ * 大为健康 V1.40
 
  * 外面嘎嘎代挂的一天8R项目
 
@@ -166,6 +166,8 @@ def recieveRebBag(uid, Authorization, huodong_id="1648773920"):
         url1 = f"https://{groupName}.hbdtxt.com/api/index/dati"
         response = requests.post(url1, headers=headers, data=a)
         response_data = response.json()
+        if "上限" in response.text:
+            return True
         # print("答题结果：", response.text)
         if response.json()["code"] == 1:
             print("答题成功：获得现金", response_data["money"])
@@ -174,6 +176,8 @@ def recieveRebBag(uid, Authorization, huodong_id="1648773920"):
             print("答题异常：", response_data["msg"])
             return False
     else:
+        if "上限" in response.text:
+            return True
         # print(response_data)
         if response_data["code"] == 777:
             print("答题失败，需要参加上一期活动：", response_data["msg"])
