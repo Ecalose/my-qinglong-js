@@ -23,7 +23,7 @@
 ## 公告
 > 自写 + 自用 的他人脚本
 
-不定期更新，有问题提issue描述清楚，避免浪费大家时间；
+不定期更新，有问题提issue描述清楚，避免浪费大家时间；或者 进群 -  [通知群](https://t.me/huan_sheng) 
 
 给朋友宣传一下：<strong style="color:green;">支持的话，可以看看这里的实惠流量卡，非物流卡哦，不定期更新， 地址：http://www.91haoka.cn/gth/#/minishop?share_id=468272&shop_name=%25E5%2585%25A8%25E7%25BD%2591%25E4%25BC%2598%25E6%2583%25A0%25E5%258D%25A1</strong>
 
