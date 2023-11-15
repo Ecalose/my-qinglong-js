@@ -8,6 +8,7 @@
 Update by Huansheng
 
 入口 微信打开：http://2621738.wburj4uaa9ned.gbl.wk47j64rz9hp.cloud/?p=2568134
+网页在线取CK：http://ck-tools.freemyip.com/
 
 变量名称：ydtoken     变量值：cookie@key
 多账号用'===='隔开 例 账号1====账号2
@@ -48,7 +49,7 @@ wxpusherTopicId = os.getenv("wxpusherTopicId") or ""
 wechatBussinessKey = os.getenv("wechatBussinessKey") or ""
 # 获取 xwytoken 环境变量值
 accounts = os.getenv("ydtoken")
-theadNumber = 10  # 并发线程数(建议3线程)
+theadNumber = 1  # 并发线程数(建议单线程，多线程容易黑微信号)
 # 等待检测文章的延时区间，默认等待 15 - 20s 的随机时间，请在该时间内完成点击阅读 检测文章
 delayMiniTime = 15
 delayMaxTime = 20
