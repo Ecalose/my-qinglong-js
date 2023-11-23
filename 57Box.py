@@ -1,9 +1,9 @@
 """
-57Box 1.12
+57Box 1.13
 仅供学习交流，请在下载后的24小时内完全删除 请勿将任何内容用于商业或非法目的，否则后果自负。
 Author By Qim肖恩
 Updated By Huansheng
-更新说明：优化相关配置项，可通过环境变量配置了，避免订阅更新导致自己修改的被覆盖了
+更新说明：删除答题等任务，只保留开箱和查询
 玩法：
 微信小程序  57Box   玩法：完成基础任务抽免费箱子
 登录微信小程序授权手机号然后下载APP设置密码
@@ -129,50 +129,50 @@ for i, account in enumerate(accounts_list, start=1):
             print(f"错误未知{response}")
             break
         if enabledTaskAndLottery:
-            print(f"{'=' * 12}开始每日任务{'=' * 12}")
-            sign = getSign(userId)
-            time.sleep(3)
-            # 进群密码
-            answerText = joinGroupPassword
-            response = requests.get(
-                f"https://www.57box.cn/app/index.php?i=2&t=0&v=1&from=wxapp&c=entry&a=wxapp&do=uptaskinfo&m=greatriver_lottery_operation&radomstr={sign}&id=26&answer={answerText}&token={token}&source=app",
-                headers=headers,
-            ).json()
-            state = "进群密码"
-            if response["errno"] == 999:
-                print(f"{state}---{response['message']}")
-            elif response["errno"] == 0:
-                print(f"{state}---{response['message']}")
-            else:
-                print(f"{state}错误未知{response}")
-                break
-            time.sleep(3)
-            response = requests.get(
-                f"https://www.57box.cn/app/index.php?i=2&t=0&v=1&from=wxapp&c=entry&a=wxapp&do=uptaskinfo&m=greatriver_lottery_operation&radomstr={sign}&id=30&answer=%E7%94%A8%E4%BA%8E%E5%95%86%E5%9F%8E%E5%92%8C%E6%8A%98%E6%89%A3%E5%95%86%E5%9F%8E%E5%85%91%E6%8D%A2%E5%95%86%E5%93%81&token={token}&source=app",
-                headers=headers,
-            ).json()
-            state = "每日答题（二）"
-            if response["errno"] == 999:
-                print(f"{state}---{response['message']}")
-            elif response["errno"] == 0:
-                print(f"{state}---{response['message']}")
-            else:
-                print(f"{state}错误未知{response}")
-                break
-            time.sleep(3)
-            response = requests.get(
-                f"https://www.57box.cn/app/index.php?i=2&t=0&v=1&from=wxapp&c=entry&a=wxapp&do=uptaskinfo&m=greatriver_lottery_operation&radomstr={sign}&id=42&answer=%E9%80%9A%E8%BF%87%E5%BC%80%E7%9B%92%E8%8E%B7%E5%BE%97%E6%AF%8F1000%E8%83%BD%E9%87%8F%E7%9F%B3%E5%8F%AF%E4%BB%A5%E5%85%91%E6%8D%A21%E6%B0%B4%E6%99%B6&token={token}&source=app",
-                headers=headers,
-            ).json()
-            state = "每日答题领福利（一）"
-            if response["errno"] == 999:
-                print(f"{state}---{response['message']}")
-            elif response["errno"] == 0:
-                print(f"{state}---{response['message']}")
-            else:
-                print(f"{state}错误未知{response}")
-                break
-            print(f"{'=' * 12}获取账号信息{'=' * 12}")
+            # print(f"{'=' * 12}开始每日任务{'=' * 12}")
+            # sign = getSign(userId)
+            # time.sleep(3)
+            # # 进群密码
+            # answerText = joinGroupPassword
+            # response = requests.get(
+            #     f"https://www.57box.cn/app/index.php?i=2&t=0&v=1&from=wxapp&c=entry&a=wxapp&do=uptaskinfo&m=greatriver_lottery_operation&radomstr={sign}&id=26&answer={answerText}&token={token}&source=app",
+            #     headers=headers,
+            # ).json()
+            # state = "进群密码"
+            # if response["errno"] == 999:
+            #     print(f"{state}---{response['message']}")
+            # elif response["errno"] == 0:
+            #     print(f"{state}---{response['message']}")
+            # else:
+            #     print(f"{state}错误未知{response}")
+            #     break
+            # time.sleep(3)
+            # response = requests.get(
+            #     f"https://www.57box.cn/app/index.php?i=2&t=0&v=1&from=wxapp&c=entry&a=wxapp&do=uptaskinfo&m=greatriver_lottery_operation&radomstr={sign}&id=30&answer=%E7%94%A8%E4%BA%8E%E5%95%86%E5%9F%8E%E5%92%8C%E6%8A%98%E6%89%A3%E5%95%86%E5%9F%8E%E5%85%91%E6%8D%A2%E5%95%86%E5%93%81&token={token}&source=app",
+            #     headers=headers,
+            # ).json()
+            # state = "每日答题（二）"
+            # if response["errno"] == 999:
+            #     print(f"{state}---{response['message']}")
+            # elif response["errno"] == 0:
+            #     print(f"{state}---{response['message']}")
+            # else:
+            #     print(f"{state}错误未知{response}")
+            #     break
+            # time.sleep(3)
+            # response = requests.get(
+            #     f"https://www.57box.cn/app/index.php?i=2&t=0&v=1&from=wxapp&c=entry&a=wxapp&do=uptaskinfo&m=greatriver_lottery_operation&radomstr={sign}&id=42&answer=%E9%80%9A%E8%BF%87%E5%BC%80%E7%9B%92%E8%8E%B7%E5%BE%97%E6%AF%8F1000%E8%83%BD%E9%87%8F%E7%9F%B3%E5%8F%AF%E4%BB%A5%E5%85%91%E6%8D%A21%E6%B0%B4%E6%99%B6&token={token}&source=app",
+            #     headers=headers,
+            # ).json()
+            # state = "每日答题领福利（一）"
+            # if response["errno"] == 999:
+            #     print(f"{state}---{response['message']}")
+            # elif response["errno"] == 0:
+            #     print(f"{state}---{response['message']}")
+            # else:
+            #     print(f"{state}错误未知{response}")
+            #     break
+            # print(f"{'=' * 12}获取账号信息{'=' * 12}")
             url = f"https://www.57box.cn/app/index.php?i=2&t=0&v=1&from=wxapp&c=entry&a=wxapp&do=getuserinfo&&token={token}"
             data = {
                 "m": "greatriver_lottery_operation",
@@ -241,24 +241,24 @@ for i, account in enumerate(accounts_list, start=1):
                         break
                     time.sleep(3)
                 print(f"开盲盒操作执行完毕")
-                if num >= 1:
-                    url = f"https://www.57box.cn/app/index.php?i=2&t=0&v=1&from=wxapp&c=entry&a=wxapp&do=uptaskinfo&&token={token}"
-                    data = {
-                        "m": "greatriver_lottery_operation",
-                        "id": "39",
-                        "answer": "",
-                    }
-                    response = requests.post(url, headers=headers, data=data).json()
-                    state = "开盒看视频领矿石"
-                    if response["errno"] == 999:
-                        print(f"{state}---{response['message']}")
-                    elif response["errno"] == 0:
-                        print(f"{state}---{response['message']}")
-                    else:
-                        print(f"{state}错误未知{response}")
-                        break
-                else:
-                    print()
+                # if num >= 1:
+                #     url = f"https://www.57box.cn/app/index.php?i=2&t=0&v=1&from=wxapp&c=entry&a=wxapp&do=uptaskinfo&&token={token}"
+                #     data = {
+                #         "m": "greatriver_lottery_operation",
+                #         "id": "39",
+                #         "answer": "",
+                #     }
+                #     response = requests.post(url, headers=headers, data=data).json()
+                #     state = "开盒看视频领矿石"
+                #     if response["errno"] == 999:
+                #         print(f"{state}---{response['message']}")
+                #     elif response["errno"] == 0:
+                #         print(f"{state}---{response['message']}")
+                #     else:
+                #         print(f"{state}错误未知{response}")
+                #         break
+                # else:
+                #     print()
 
             elif lottery == 0:
                 print(f"{'=' * 12}不执行开鞋盒{'=' * 12}")
