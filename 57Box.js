@@ -3,7 +3,7 @@
  * 
  * 57Box V1.01
  * const $ = new Env("57Box");
- * cron */25 * * * * 57Box.js
+ * cron 0,25,50 * * * * 57Box.js
  * author by Huansheng
  * ========= 青龙--配置文件 ===========
  * # 项目名称
@@ -11,7 +11,7 @@
 
  * 自己抓包搜索 auth&a=session&do=userinfo&&state= 复制请求地址上的 state值（格式：we7sid-abb771337bbe01eb93cf54031196d241） 以及 该请求完整的请求数据，用 # 链接
  * 最终格式为： 账号备注#url上的state值#完整提交数据
-
+ * 定时推荐 每隔 十几分钟到二十几分钟执行一次
  * 多账号换行
 
  * 奖励：自动答题赚矿石，开箱抽奖请运行另一个本
