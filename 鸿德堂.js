@@ -4,7 +4,7 @@
  * 鸿德堂 V1.00
  * const $ = new Env("鸿德堂");
  * 
- * cron 10 6,15 * * * 鸿德堂.js
+ * cron 10 8,15 * * * 鸿德堂.js
  * 
  * 注册地址：https://wx.kmvideo.net/pages/vip/live/liveDetail?qrCode=4552334-11426-5qJKX3fPxp
  * 
