@@ -4,7 +4,6 @@
  * 
  * cron 10 6,15 * * * 王老吉越龙门.js
  * 活动入口：https://mx.qrurl.net/s/24117tDVpYR
- * 注册地址：https://z1.ax1x.com/2023/10/22/pikzEbn.png
  * 
  * ========= 青龙--配置文件 ===========
  * # 项目名称
