@@ -1,4 +1,4 @@
-# my-js-bak
+# 幻生青龙脚本备份
 
 ## 特别声明
 本仓库发布的脚本及其中涉及的任何解锁和解密分析脚本，仅用于测试和学习研究，禁止用于商业用途，不能保证其合法性，准确性，完整性和有效性，请根据情况自行判断。
@@ -49,3 +49,8 @@ ql repo https://github.com/Huansheng1/my-qinglong-js.git "" "sendNotify.js|utils
 
 ### 报错提示
 1. `/ql/data/config/config.sh: line xxx`：`这种基本都是配置文件里的数据配错了，导致qinglong读取环境变量直接崩了，请检查是否多了空格或者格式不合法`
+2. 两个依赖，一个 `https-proxy-agent`，一个 `http-proxy-agent`；两个都要装！别再问了🤡
+3. 还有`./utils.js`是文件！不是依赖，单拉文件不是拉整个仓库的去仓库里找到 `utils.js` 文件，放到要运行的脚本同一目录下，别给我装依赖了🥶
+
+### 打赏支持
+![让我割一下](https://pic.imgdb.cn/item/6600e2b79f345e8d0395feb5.jpg)
